@@ -7,7 +7,7 @@ async function generateVideo() {
     videoOutput.style.display = 'none';
   
     try {
-      const response = await fetch('https://api.pixverse.ai/v1/video', {
+      const response = await fetch('https://app-api.pixverse.ai/openapi/v2/video/text/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
