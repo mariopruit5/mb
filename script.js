@@ -1,0 +1,35 @@
+async function generateVideo() {
+    const prompt = document.getElementById('prompt').value;
+    const status = document.getElementById('status');
+    const videoOutput = document.getElementById('videoOutput');
+    
+    status.innerText = 'Generating video...';
+    videoOutput.style.display = 'none';
+  
+    try {
+      const response = await fetch('https://api.pixverse.ai/v1/video', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer YOUR_PIXVERSE_API_KEY'
+        },
+        body: JSON.stringify({
+          prompt: prompt
+        })
+      });
+  
+      const data = await response.json();
+      
+      if (data && data.video_url) {
+        videoOutput.src = data.video_url;
+        videoOutput.style.display = 'block';
+        status.innerText = 'Video ready!';
+      } else {
+        status.innerText = 'Failed to generate video.';
+      }
+    } catch (error) {
+      console.error(error);
+      status.innerText = 'Error generating video.';
+    }
+  }
+  
