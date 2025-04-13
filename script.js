@@ -11,7 +11,7 @@ async function generateVideo() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer YOUR_PIXVERSE_API_KEY'
+          'Authorization': 'sk-b6ab01e1bd34e012bf1708236e6b15be'
         },
         body: JSON.stringify({
           prompt: prompt
